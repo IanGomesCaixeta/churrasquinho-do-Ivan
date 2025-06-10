@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avaliações - Restaurante Sabor & Arte</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">Restaurante <span>Sabor</span> & Arte</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cardapio.html">Cardápio</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="localizacao.html">Localização</a></li>
+          <li><a href="avaliacao.html" class="active">Avaliações</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="section-title">Avaliações dos Clientes</h1>
+    
+    <div class="review">
+      <div class="review-header">
+        <div class="review-avatar">AC</div>
+        <div class="review-name">Ana Carolina</div>
+        <div class="review-stars">★★★★★</div>
+      </div>
+      <p>"Experiência incrível! O risoto de cogumelos é divino e o atendimento impecável. O ambiente é aconchegante e elegante ao mesmo tempo. Voltarei com certeza!"</p>
+      <div class="review-date">Postado em 15/05/2023</div>
+    </div>
+    
+    <div class="review">
+      <div class="review-header">
+        <div class="review-avatar">RA</div>
+        <div class="review-name">Ricardo Almeida</div>
+        <div class="review-stars">★★★★☆</div>
+      </div>
+      <p>"Ambiente agradável e comida de primeira. O filé mignon estava perfeito, no ponto exato que pedi. A única observação é que os preços são um pouco salgados, mas a qualidade justifica."</p>
+      <div class="review-date">Postado em 02/05/2023</div>
+    </div>
+    
+    <div class="review">
+      <div class="review-header">
+        <div class="review-avatar">JS</div>
+        <div class="review-name">Juliana Santos</div>
+        <div class="review-stars">★★★★★</div>
+      </div>
+      <p>"Melhor restaurante da cidade! Tudo perfeito: comida, serviço, ambiente. O tiramisu é de outro mundo! Já recomendei para todos os meus amigos e familiares."</p>
+      <div class="review-date">Postado em 22/04/2023</div>
+    </div>
+    
+    <div class="review-form">
+      <h3>Deixe sua Avaliação</h3>
+      <form>
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label>Avaliação:</label>
+          <div class="star-rating">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="comentario">Comentário:</label>
+          <textarea id="comentario" name="comentario" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn">Enviar Avaliação</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2018 Churrasquinho do Ivan. Todos os direitos reservados.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Simples sistema de avaliação com estrelas
+    document.querySelectorAll('.star-rating span').forEach((star, index, stars) => {
+      star.addEventListener('click', () => {
+        stars.forEach((s, i) => {
+          s.classList.toggle('active', i <= index);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
