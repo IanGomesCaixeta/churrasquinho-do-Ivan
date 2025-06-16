@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avaliações -Churrasquinho do Ivan</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="active"><img src="imagens/logo.png" width="100"  alt="Churrasquinho do Ivan" class="logo-img"></a>
+      <div class="logo">Churrasquinho<span> do Ivan</span></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cardapio.html">Cardápio</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="localizacao.html">Localização</a></li>
+          <li><a href="avaliacao.html" class="active">Avaliações</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2 class="section-title">Avaliações dos Clientes</h2>
+
+    
+    <div class="review">
+      <div class="review-header">
+        <div class="review-avatar">A</div>
+        <strong>Alessandra Silva</strong>
+        <div class="review-stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+      </div>
+      <p>A comida é maravilhosa e o atendimento impecável! Voltarei com certeza.</p>
+    </div>
+
+    <div class="review">
+      <div class="review-header">
+        <div class="review-avatar">J</div>
+        <strong>João Pedro</strong>
+        <div class="review-stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+      </div>
+      <p>Gostei do ambiente, mas achei que demorou um pouco para chegar meu pedido.</p>
+    </div>
+
+    
+    <div class="review-form">
+      <h3>Deixe sua Avaliação</h3>
+      <form id="form-avaliacao">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="comentario">Comentário:</label>
+          <textarea id="comentario" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Nota:</label>
+          <div class="star-rating" id="star-rating">
+            <span data-star="1"><i class="fas fa-star"></i></span>
+            <span data-star="2"><i class="fas fa-star"></i></span>
+            <span data-star="3"><i class="fas fa-star"></i></span>
+            <span data-star="4"><i class="fas fa-star"></i></span>
+            <span data-star="5"><i class="fas fa-star"></i></span>
+          </div>
+        </div>
+        <button type="submit" class="btn">Enviar Avaliação</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2018 Churrasquinho do Ivan. Todos os direitos reservados.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/churrasquinho_ivan/"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/5561991695708?"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const stars = document.querySelectorAll("#star-rating span");
+    let currentRating = 0;
+
+    stars.forEach(star => {
+      star.addEventListener("click", () => {
+        currentRating = star.getAttribute("data-star");
+        stars.forEach(s => s.classList.remove("active"));
+        for (let i = 0; i < currentRating; i++) {
+          stars[i].classList.add("active");
+        }
+      });
+    });
+
+    document.getElementById("form-avaliacao").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const comentario = document.getElementById("comentario").value;
+
+      if (nome && comentario && currentRating > 0) {
+        const novaReview = document.createElement("div");
+        novaReview.classList.add("review");
+
+        novaReview.innerHTML = `
+          <div class="review-header">
+            <div class="review-avatar">${nome[0].toUpperCase()}</div>
+            <strong>${nome}</strong>
+            <div class="review-stars">
+              ${'<i class="fas fa-star"></i>'.repeat(currentRating)}
+              ${'<i class="far fa-star"></i>'.repeat(5 - currentRating)}
+            </div>
+          </div>
+          <p>${comentario}</p>
+        `;
+
+        this.parentElement.insertAdjacentElement("beforebegin", novaReview);
+        this.reset();
+        stars.forEach(s => s.classList.remove("active"));
+        currentRating = 0;
+        alert("Avaliação enviada com sucesso!");
+      } else {
+        alert("Por favor, preencha todos os campos e selecione uma nota.");
+      }
+    });
+  </script>
+</body>
+</html>
